@@ -12,23 +12,23 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
       - name: Log in to GH Packages registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
-#      - name: Build Docker images
-#        shell: bash
-#        run: |
-#          docker build -t ghcr.io/${{ github.repository_owner }}/ims-data-explorer:1.0.0 .
-      - name: Build and push
-        uses: docker/build-push-action@v6
-        with:
-          platforms: linux/arm64
-          load: true
-          tags: vc-fms/ims-data-explorer:1.0.0
+      - name: Build Docker images
+        shell: bash
+        run: |
+          docker build --platform linux/arm64 -t ghcr.io/${{ github.repository_owner }}/ims-data-explorer:1.0.0 .
+#      - name: Build and push
+#        uses: docker/build-push-action@v6
+#        with:
+#          platforms: linux/arm64
+#          load: true
+#          tags: vc-fms/ims-data-explorer:1.0.0
 #
-#      - name: Push to GH Packages
-#        run: |
-#          docker push ghcr.io/${{ github.repository_owner }}/ims-data-explorer:1.0.0
+      - name: Push to GH Packages
+        run: |
+          docker push ghcr.io/${{ github.repository_owner }}/ims-data-explorer:1.0.0
