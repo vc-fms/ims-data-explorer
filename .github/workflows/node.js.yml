@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    runs-on: paramount-cloud-ubuntu-arm64-latest-medium
+    runs-on: paramount-cloud-ubuntu-arm64-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
