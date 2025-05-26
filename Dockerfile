@@ -22,3 +22,5 @@ COPY --from=build-stage /tmp/server/node_modules ./node_modules
 COPY --from=build-stage /tmp/server/package.json ./package.json
 COPY --from=build-stage /tmp/server/schema/discovery-schema.json ./schema/discovery-schema.json
 
+CMD ["yarn", "start"]
+
