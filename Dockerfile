@@ -1,5 +1,5 @@
 # BUILD STAGE
-FROM --platform=linux/arm64 node:16-alpine AS build-stage
+FROM node:16-alpine AS build-stage
 LABEL stage=build-stage
 
 WORKDIR /tmp/server
@@ -11,10 +11,9 @@ COPY . ./
 RUN yarn && yarn build
 
 # PROD STAGE
-FROM --platform=linux/arm64 node:16-alpine AS prod-stage
-RUN apt-get update && apt-get install -y procps
-#RUN apk update && apk upgrade --no-cache
-#RUN apk add procps
+FROM node:16-alpine AS prod-stage
+RUN apk update && apk upgrade --no-cache
+RUN apk add procps
 
 WORKDIR /apps/nf-data-explorer
 

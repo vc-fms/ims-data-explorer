@@ -21,7 +21,7 @@ jobs:
       - name: Build Docker images
         shell: bash
         run: |
-          docker build --platform linux/arm64 -t ghcr.io/${{ github.repository_owner }}/ims-data-explorer:1.0.0 .
+          docker build -t ghcr.io/${{ github.repository_owner }}/ims-data-explorer:1.0.0 .
 #      - name: Build and push
 #        uses: docker/build-push-action@v6
 #        with:
